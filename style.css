@@ -1,0 +1,77 @@
+*{
+    margin-bottom: 8%;
+}
+    body {
+    background: linear-gradient(135deg, #4203a9, #90bafc);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
+    text-align: center;
+    overflow-y: auto;
+    margin-top: 1%;
+    width: 100%;
+}
+
+h1 {
+    background: linear-gradient(135deg, #a21ec7, #ad3bcd);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 36px;
+    margin-top: 10px;
+    margin-bottom: 20px; /* Increase the margin at the bottom */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 24px;
+    margin: 20px 5px;
+}
+
+input[type="number"], select {
+    width: 140px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 0px;
+    font-size: 18px;
+}
+
+button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 24px;    
+    margin-bottom: 10px; /* Increase the margin at the bottom of the result */
+}
+
+button:hover {
+    background: #45a049;    
+}
+
+p {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 40px; /* Increase the margin at the bottom of the result */
+}
+
+#goToAgeCalculator {
+    background: #dbde46;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 15px;
+    padding: 5px 5px;
+    cursor: pointer;
+    font-size: 15px;    
+    margin-bottom: 10px; /* Increase the margin at the bottom of the result */
+    text-decoration: none;
+}
