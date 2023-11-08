@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Life Time Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>    
+    
+    <h1>What Time is Your Life?</h1>
+    <label for="currentAge">Enter your current age:</label>
+    <input type="number" id="currentAge" min="0">
+
+    <label for "lifeExpectancy">Enter your expected age of death:</label>
+    <input type="number" id="lifeExpectancy" min="0">
+
+    <label for="wakeupHour">Select your usual wake-up time:</label>
+    <select id="wakeupHour">
+        <option value="1AM">1:00 AM</option>
+        <option value="2AM">2:00 AM</option>
+        <option value="3AM">3:00 AM</option>
+        <option value="4AM">4:00 AM</option>
+        <option value="5AM">5:00 AM</option>
+        <option value="6AM" selected>6:00 AM</option>
+        <option value="7AM">7:00 AM</option>
+        <option value="8AM">8:00 AM</option>
+        <option value="9AM">9:00 AM</option>
+        <option value="10AM">10:00 AM</option>
+        <option value="11AM">11:00 AM</option>
+        <option value="12PM">12:00 PM</option>
+    </select>
+
+    <label for="bedtimeHour">Select your usual bedtime:</label>
+    <select id="bedtimeHour">
+        <option value="1PM">1:00 PM</option>
+        <option value="2PM">2:00 PM</option>
+        <option value="3PM">3:00 PM</option>
+        <option value="4PM">4:00 PM</option>
+        <option value="5PM">5:00 PM</option>
+        <option value="6PM">6:00 PM</option>
+        <option value="7PM">7:00 PM</option>
+        <option value="8PM">8:00 PM</option>
+        <option value="9PM">9:00 PM</option>
+        <option value="10PM" selected>10:00 PM</option>
+        <option value="11PM">11:00 PM</option>
+        <option value="12AM">12:00 AM</option>
+    </select><br><br>
+
+    <button onclick="calculateLifeProgress()">Calculate</button><br><br>
+  
+    <p id="result"></p>
+    
+
+    <script>
+        function calculateLifeProgress() {
+            const currentAge = parseInt(document.getElementById('currentAge').value);
+            const lifeExpectancy = parseInt(document.getElementById('lifeExpectancy').value);
+            const wakeupHour = document.getElementById('wakeupHour').value;
+            const bedtimeHour = document.getElementById('bedtimeHour').value;
+
+            if (isNaN(currentAge) || isNaN(lifeExpectancy)) {
+                document.getElementById('result').innerHTML = "Please enter your current age and expected age of passing.";
+                return;
+            }
+
+            const currentHour = parseInt(wakeupHour);
+            const bedtime = parseInt(bedtimeHour);
+
+            if (currentAge >= lifeExpectancy) {
+                document.getElementById('result').innerHTML = "You have already exceeded your expected lifespan.";
+                return;
+            }
+
+            const totalHoursInDay = 12 - (currentHour - bedtime);
+
+            const hoursLived = (currentAge / lifeExpectancy) * totalHoursInDay;
+            const currentHourInDay = currentHour + hoursLived;
+            const currentHourAdjusted = currentHourInDay % 12 || 12;
+            const currentMinute = (hoursLived % 1) * 60;
+            const period = currentHourInDay >= 12 ? 'PM' : 'AM';
+
+            const formattedHour = (currentHourAdjusted < 10 ? Math.floor(currentHourAdjusted) : Math.floor(currentHourAdjusted)) === 0 && period === 'PM' ? 12 : (currentHourAdjusted < 10 ? Math.floor(currentHourAdjusted) : Math.floor(currentHourAdjusted));
+            const formattedMinute = currentMinute === 0 ? '' : `:${Math.floor(currentMinute)}`;
+
+
+            document.getElementById('result').innerHTML = `Your life is currently at ${formattedHour}${formattedMinute} ${period}.`;
+        }
+
+        document.addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                calculateLifeProgress();
+            }
+        }
+
+        );
+    </script>
+
+
+
+</body>
+</html>
